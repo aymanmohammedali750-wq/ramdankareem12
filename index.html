@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>إمساكية رمضان 2026 - بغداد</title>
+  <style>
+    :root{
+      --bg1:#24004a;
+      --bg2:#6b2cff;
+      --card:#0e0b1eaa;
+      --stroke:#ffffff22;
+      --text:#fff;
+      --muted:#d9d2ff;
+      --accent:#ffb84d;
+      --btn:#2a0f5a;
+      --btn2:#3a167a;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Tahoma, Arial;
+      color:var(--text);
+      min-height:100vh;
+      background: radial-gradient(1200px 500px at 30% 10%, #ff5bd1aa, transparent 60%),
+                  radial-gradient(900px 500px at 70% 0%, #ffd36baa, transparent 60%),
+                  linear-gradient(160deg,var(--bg2),var(--bg1));
+    }
+    .wrap{max-width:480px;margin:0 auto;padding:14px 14px 26px; position:relative;}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 6px 12px;
+    }
+    .iconbtn{
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.18);
+      color:var(--text);
+      border-radius:14px;
+      padding:10px 12px;
+      cursor:pointer;
+      box-shadow: var(--shadow);
+    }
+    .hero{
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.18);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:14px;
+      text-align:center;
+    }
+    .sky{
+      height:120px;
+      border-radius: 16px;
+      background: radial-gradient(220px 120px at 30% 30%, #ffe08a, transparent 60%),
+                  radial-gradient(420px 220px at 70% 0%, #ff5bd1, transparent 60%),
+                  linear-gradient(180deg,#3b1aa8,#1a0044);
+      position:relative;
+      overflow:hidden;
+      margin-bottom:12px;
+    }
+    .moon{
+      width:70px;height:70px;border-radius:50%;
+      background: #fff6d8;
+      position:absolute; left:18px; top:18px;
+      box-shadow: 0 0 30px rgba(255,240,190,.7);
+      opacity:.95;
+    }
+    .avatar{
+      width:92px;height:92px;border-radius:50%;
+      border:3px solid rgba(255,255,255,.35);
+      object-fit:cover;
+      display:block;
+      margin:-52px auto 10px;
+      background:#111;
+      box-shadow: var(--shadow);
+    }
+    .fatihah{
+      font-weight:800;
+      margin:0;
+      line-height:1.3;
+      font-size:18px;
+    }
+    .name{
+      margin:6px 0 8px;
+      font-weight:900;
+      font-size:22px;
+      color:#ff6bd6;
+      text-shadow: 0 6px 20px rgba(0,0,0,.35);
+    }
+    .duaHint{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    .panel{
+      margin-top:14px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.18);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:14px;
+    }
+    .dayTitle{
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900; font-size:22px; color:var(--accent);
+      margin-bottom:12px;
+    }
+    .gridTimes{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    .timeBox{
+      background: var(--card);
+      border:1px solid var(--stroke);
+      border-radius: 14px;
+      padding:10px 10px 12px;
+      text-align:center;
+    }
+    .timeBox .label{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:700}
+    .timeBox .val{font-size:18px;font-weight:900}
+    .note{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:12.5px;
+      text-align:center;
+    }
+
+    .daysGrid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap:10px;
+    }
+    .dayBtn{
+      background: rgba(0,0,0,.20);
+      border:1px solid var(--stroke);
+      border-radius: 14px;
+      padding:10px 6px;
+      color:var(--text);
+      cursor:pointer;
+      text-align:center;
+      font-weight:800;
+      box-shadow: 0 10px 20px rgba(0,0,0,.18);
+    }
+    .dayBtn small{display:block;color:var(--muted);font-weight:700;margin-bottom:4px}
+    .dayBtn.active{
+      background: linear-gradient(180deg,#ff6bd6,#ffb84d);
+      color:#1a0038;
+      border-color: transparent;
+    }
+
+    /* Sidebar */
+    .backdrop{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none;
+    }
+    .backdrop.show{display:block}
+    .sidebar{
+      position:fixed; top:0; bottom:0; right:-320px;
+      width:320px; max-width:92vw;
+      background: #120026;
+      border-left:1px solid var(--stroke);
+      box-shadow: -20px 0 40px rgba(0,0,0,.45);
+      transition: right .25s ease;
+      padding:14px;
+      overflow:auto;
+    }
+    .sidebar.open{right:0}
+    .sideTop{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .sideTop h3{margin:0;font-size:16px}
+    .duaCard{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding:12px;
+      margin:10px 0;
+    }
+    .duaCard h4{margin:0 0 8px;font-size:14px;color:var(--accent)}
+    .duaCard p{margin:0;color:#f2edff;line-height:1.7;font-size:13px}
+    .copyBtn{
+      margin-top:10px;
+      width:100%;
+      border:none;
+      border-radius: 12px;
+      padding:10px 12px;
+      cursor:pointer;
+      background: var(--btn2);
+      color:#fff;
+      font-weight:800;
+    }
+    .footer{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:11.5px;
+      text-align:center;
+      opacity:.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <button class="iconbtn" id="openSide">☰ الأدعية</button>
+      <button class="iconbtn" id="todayBtn">📅 اليوم 1</button>
+    </div>
+
+    <section class="hero">
+      <div class="sky">
+        <div class="moon"></div>
+      </div>
+
+      <img class="avatar" src="marhooma.jpg" alt="صورة المرحومة" />
+      <p class="fatihah">الفاتحة على روح المرحومة</p>
+      <div class="name">زينب حسن عباس البهادلي</div>
+      <p class="duaHint">اللهم اغفر لها وارحمها، واجعل قبرها روضةً من رياض الجنة.</p>
+    </section>
+
+    <section class="panel">
+      <div class="dayTitle" id="dayTitle">1 رمضان</div>
+
+      <div class="gridTimes" id="timesGrid">
+        <!-- Filled by JS -->
+      </div>
+
+      <p class="note">اختر اليوم من الأسفل لعرض الأوقات (إمساك/فجر/ظهر/عصر/مغرب/عشاء).</p>
+
+      <div class="daysGrid" id="daysGrid"></div>
+    </section>
+
+    <div class="footer">
+      * الإمساك/الفجر/الظهر/المغرب مأخوذة من جدول الإمساكية المرسل. العصر/العشاء محسوبة تلقائياً (Jafari) لبغداد إن لم تتوفر في المصدر.
+    </div>
+  </div>
+
+  <div class="backdrop" id="backdrop"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sideTop">
+      <h3>الأدعية</h3>
+      <button class="iconbtn" id="closeSide">✕</button>
+    </div>
+
+    <div class="duaCard">
+      <h4>دعاء استقبال الشهر (للإمام زين العابدين)</h4>
+      <p id="dua1">الحمد لله الذي هدانا لحمده، وجعلنا من أهله لنكون لإحسانه من الشاكرين.</p>
+      <button class="copyBtn" data-copy="dua1">نسخ الدعاء</button>
+    </div>
+
+    <div class="duaCard">
+      <h4>دعاء اليوم الأول (صيغة مختصرة)</h4>
+      <p id="dua2">اللهم اجعل صيامي فيه صيام الصائمين، وقيامي قيام القائمين، ونبّهني فيه عن نومة الغافلين، واعفُ عني يا أرحم الراحمين.</p>
+      <button class="copyBtn" data-copy="dua2">نسخ الدعاء</button>
+    </div>
+
+    <div class="duaCard">
+      <h4>دعاء ليلة القدر (صيغة مختصرة)</h4>
+      <p id="dua3">اللهم اغفر لي ووالديّ وللمؤمنين، ويسّر أموري، وارزقني من فضل ليلة القدر، واجعلني من عتقائك من النار، وأدخلني الجنة برحمتك.</p>
+      <button class="copyBtn" data-copy="dua3">نسخ الدعاء</button>
+    </div>
+
+    <div class="duaCard">
+      <h4>أدعية يومية (تذكير)</h4>
+      <p id="dua4">يُستحب قراءة دعاء لكل يوم من أيام الشهر، يتضمن طلب المغفرة وقبول الأعمال والتقرب إلى الله والتشفع بالنبي وآله عليهم السلام.</p>
+      <button class="copyBtn" data-copy="dua4">نسخ</button>
+    </div>
+
+    <div class="footer">إذا ترسل نصوص الأدعية كاملة، أضيفها لك مثل ما هي.</div>
+  </aside>
+
+  <!-- PrayTimes (mini) لحساب العصر/العشاء -->
+  <script>
+    // PrayTimes (simplified) - Jafari defaults
+    // المصدر الأصلي للفكرة: praytimes.org (مكتبة شائعة لحساب مواقيت الصلاة)
+    class PrayTimes {
+      constructor(method='Jafari'){
+        this.methods = {
+          Jafari: {fajr:16, isha:14, maghrib:4, midnight:'Jafari'}
+        };
+        this.setting = {...this.methods[method], imsak:'10 min', dhuhr:'0 min', asr:'Standard', highLats:'NightMiddle'};
+        this.timeNames = {imsak:'الإمساك', fajr:'الفجر', dhuhr:'الظهر', asr:'العصر', maghrib:'المغرب', isha:'العشاء'};
+      }
+      getTimes(date, coords, timezone){
+        // حسابات مبسطة جيدة للعرض (ليست بديل عن المصدر الرسمي)
+        const [lat,lng] = coords;
+        const D = this.julian(date.getFullYear(), date.getMonth()+1, date.getDate()) - lng/(15*24);
+        const t = this.computeTimes(lat, D, timezone);
+        return t;
+      }
+      julian(y,m,d){
+        if (m <= 2){ y -= 1; m += 12; }
+        const A = Math.floor(y/100);
+        const B = 2 - A + Math.floor(A/4);
+        return Math.floor(365.25*(y+4716)) + Math.floor(30.6001*(m+1)) + d + B - 1524.5;
+      }
+      sunPosition(jd){
+        const D = jd - 2451545.0;
+        const g = this.dtr((357.529 + 0.98560028*D) % 360);
+        const q = this.dtr((280.459 + 0.98564736*D) % 360);
+        const L = (q + this.dtr(1.915)*Math.sin(g) + this.dtr(0.020)*Math.sin(2*g));
+        const e = this.dtr(23.439 - 0.00000036*D);
+        const RA = Math.atan2(Math.cos(e)*Math.sin(L), Math.cos(L))/this.dtr(15);
+        const decl = Math.asin(Math.sin(e)*Math.sin(L));
+        const eqt = q/this.dtr(15) - this.fixHour(RA);
+        return {decl, eqt};
+      }
+      equationOfTime(jd){ return this.sunPosition(jd).eqt; }
+      sunDeclination(jd){ return this.sunPosition(jd).decl; }
+      computeMidDay(t, jd){ return this.fixHour(12 - this.equationOfTime(jd + t)); }
+      sunAngleTime(angle, t, jd, lat, direction){
+        const decl = this.sunDeclination(jd + t);
+        const noon = this.computeMidDay(t, jd);
+        const term1 = (-Math.sin(this.dtr(angle)) - Math.sin(decl)*Math.sin(this.dtr(lat)));
+        const term2 = (Math.cos(decl)*Math.cos(this.dtr(lat)));
+        const w = this.arccos(term1/term2)/15;
+        return noon + (direction === 'ccw' ? -w : w);
+      }
+      asrTime(factor, t, jd, lat){
+        const decl = this.sunDeclination(jd + t);
+        const angle = -this.rtd(Math.atan(1/(factor + Math.tan(Math.abs(this.dtr(lat) - decl)))));
+        return this.sunAngleTime(angle, t, jd, lat, 'cw');
+      }
+      computeTimes(lat, jd, timezone){
+        let times = {imsak:5, fajr:5, sunrise:6, dhuhr:12, asr:15, sunset:18, maghrib:18, isha:18};
+        // iterate
+        for (let i=0;i<2;i++){
+          times = this.computePrayerTimes(times, lat, jd);
+        }
+        // apply timezone
+        for (const k in times) times[k] = times[k] + timezone - (0); // lng handled earlier
+        // format
+        const out = {};
+        out.fajr = this.formatTime(times.fajr);
+        out.dhuhr = this.formatTime(times.dhuhr);
+        out.asr = this.formatTime(times.asr);
+        out.maghrib = this.formatTime(times.maghrib);
+        out.isha = this.formatTime(times.isha);
+        return out;
+      }
+      computePrayerTimes(t, lat, jd){
+        const d = dayPortion(t);
+        const fajr = this.sunAngleTime(this.setting.fajr, d.fajr, jd, lat, 'ccw');
+        const sunrise = this.sunAngleTime(0.833, d.sunrise, jd, lat, 'ccw');
+        const dhuhr = this.computeMidDay(d.dhuhr, jd);
+        const asr = this.asrTime(1, d.asr, jd, lat);
+        const sunset = this.sunAngleTime(0.833, d.sunset, jd, lat, 'cw');
+        const maghrib = this.sunAngleTime(this.setting.maghrib, d.maghrib, jd, lat, 'cw');
+        const isha = this.sunAngleTime(this.setting.isha, d.isha, jd, lat, 'cw');
+        return {fajr, sunrise, dhuhr, asr, sunset, maghrib, isha};
+        function dayPortion(t){
+          const o={}; for (const k in t) o[k]=t[k]/24; return o;
+        }
+      }
+      formatTime(time){
+        time = this.fixHour(time + 0.5/60); // rounding
+        const h = Math.floor(time);
+        const m = Math.floor((time - h)*60);
+        return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+      }
+      dtr(d){ return (d*Math.PI)/180; }
+      rtd(r){ return (r*180)/Math.PI; }
+      arccos(x){ return this.rtd(Math.acos(x)); }
+      fixHour(a){ a = a - 24*Math.floor(a/24); return a < 0 ? a+24 : a; }
+    }
+  </script>
+
+  <script>
+    const BAGHDAD = { lat: 33.3152, lng: 44.3661, tz: 3 };
+    const pray = new PrayTimes('Jafari');
+
+    const timesGrid = document.getElementById('timesGrid');
+    const daysGrid  = document.getElementById('daysGrid');
+    const dayTitle  = document.getElementById('dayTitle');
+
+    const sidebar   = document.getElementById('sidebar');
+    const backdrop  = document.getElementById('backdrop');
+
+    document.getElementById('openSide').onclick = () => { sidebar.classList.add('open'); backdrop.classList.add('show'); };
+    document.getElementById('closeSide').onclick = closeSide;
+    backdrop.onclick = closeSide;
+    function closeSide(){ sidebar.classList.remove('open'); backdrop.classList.remove('show'); }
+
+    // Copy buttons
+    document.querySelectorAll('.copyBtn').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const id = btn.getAttribute('data-copy');
+        const text = document.getElementById(id).innerText.trim();
+        try{ await navigator.clipboard.writeText(text); btn.innerText = "تم النسخ ✅"; setTimeout(()=>btn.innerText="نسخ",1200); }
+        catch(e){ alert("ماكدر انسخ.. انسخ يدويًا."); }
+      });
+    });
+
+    let DATA = null;
+    let activeDay = 1;
+
+    async function load(){
+      const res = await fetch('./data.json');
+      DATA = await res.json();
+      buildDays();
+      showDay(1);
+    }
+
+    function buildDays(){
+      daysGrid.innerHTML = '';
+      for(let d=1; d<=30; d++){
+        const b = document.createElement('button');
+        b.className = 'dayBtn' + (d===activeDay ? ' active':'');
+        b.innerHTML = `<small>رمضان</small>${d}`;
+        b.onclick = ()=> showDay(d);
+        daysGrid.appendChild(b);
+      }
+    }
+
+    // ملاحظة: هنا نربط رمضان 1 بتاريخ 2026-02-19 (حسب الجدول المرسل)
+    function gregorianForRamadanDay(rday){
+      const start = new Date(Date.UTC(2026,1,19)); // 2026-02-19
+      const dt = new Date(start.getTime() + (rday-1)*24*60*60*1000);
+      return dt;
+    }
+
+    function showDay(rday){
+      activeDay = rday;
+      document.querySelectorAll('.dayBtn').forEach((x,i)=> x.classList.toggle('active', i===rday-1));
+      dayTitle.innerText = `${rday} رمضان`;
+
+      const item = DATA.days.find(x=>x.ramadan===rday);
+      const dt = gregorianForRamadanDay(rday);
+      const computed = pray.getTimes(dt, [BAGHDAD.lat, BAGHDAD.lng], BAGHDAD.tz);
+
+      // نعرض: إمساك/فجر/ظهر/عصر/مغرب/عشاء
+      const view = [
+        {label:'الإمساك', val:item.imsak},
+        {label:'الفجر',   val:item.fajr},
+        {label:'الظهر',   val:item.dhuhr},
+        {label:'العصر',   val:computed.asr},
+        {label:'المغرب',  val:item.maghrib},
+        {label:'العشاء',  val:computed.isha}
+      ];
+
+      timesGrid.innerHTML = view.map(v=>`
+        <div class="timeBox">
+          <div class="label">${v.label}</div>
+          <div class="val">${v.val}</div>
+        </div>
+      `).join('');
+    }
+
+    document.getElementById('todayBtn').onclick = ()=> showDay(1);
+
+    load();
+  </script>
+</body>
+</html>
